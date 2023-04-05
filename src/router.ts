@@ -1,13 +1,22 @@
-import { Router } from 'express'
+import { Router } from 'express';
+import shortController from './controllers/ShortController';
+import authController from './controllers/AuthController';
 
 // import testController from './controllers/TestController'
 
-const router = Router()
+const router = Router();
 
-// router.get('/test-route', testController.getAll)
-// router.get('/test-route/:id', testController.getOnce)
-// router.post('/test-route', testController.create)
-// router.put('/test-route', testController.update)
-// router.delete('/test-route/:id', testController.delete)
+router.post('/register', authController.create);
+router.post('/login', authController.getOnce);
+router.get('/users', authController.getAll);
 
-export default router
+router.get('/short/all', shortController.getAll);
+router.get('/short/:hash', shortController.getByHash);
+router.get('/short/id/:id', shortController.getById);
+router.post('/short', shortController.create);
+
+router.put('/short/update-hash/:id', shortController.updateHash);
+router.put('/short/update-origin/:id', shortController.updateOrigin);
+router.delete('/short/:id', shortController.delete);
+
+export default router;

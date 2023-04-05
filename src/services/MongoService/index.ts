@@ -114,7 +114,7 @@ class MongoService implements IMongoService {
 }
 
 const mongoService = new MongoService({
-  dbName: 'test',
+  dbName: 'shorturl-base',
 })
 
 export default mongoService
